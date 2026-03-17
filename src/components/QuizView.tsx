@@ -102,7 +102,7 @@ const QuizView = ({ subject, onBack, difficulty = "medium" }: QuizViewProps) => 
           )}
           <div className="flex gap-3 justify-center mt-6">
             <motion.button whileTap={{ scale: 0.95 }} onClick={onBack} className="px-5 py-2.5 bg-muted rounded-xl font-display font-semibold">Back to Learn</motion.button>
-            <motion.button whileTap={{ scale: 0.95 }} onClick={() => { setCurrent(0); setSelected(null); setScore(0); setFinished(false); setLoading(true); }} className="px-5 py-2.5 bg-primary text-primary-foreground rounded-xl font-display font-bold">
+            <motion.button whileTap={{ scale: 0.95 }} onClick={() => { setCurrent(0); setSelected(null); setScore(0); setFinished(false); setRetryKey(k => k + 1); }} className="px-5 py-2.5 bg-primary text-primary-foreground rounded-xl font-display font-bold">
               Try Again 🔄
             </motion.button>
           </div>
