@@ -47,7 +47,7 @@ const QuizView = ({ subject, onBack, difficulty = "medium" }: QuizViewProps) => 
       }
     };
     fetchQuizzes();
-  }, [subject, difficulty]);
+  }, [subject, difficulty, retryKey]);
 
   const q = quizzes[current];
 
