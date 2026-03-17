@@ -149,7 +149,7 @@ const BattleTab = () => {
             </div>
             <Swords className="w-8 h-8 text-muted-foreground self-center" />
             <div className="text-center">
-              <span className="text-3xl">{mode === "ai" ? "🤖" : opponent.avatar}</span>
+              <span className="text-3xl">{battleMode === "ai" ? "🤖" : opponent.avatar}</span>
               <p className="font-display font-bold text-lg text-destructive">{opScore}</p>
               <p className="text-xs text-muted-foreground">Opponent</p>
             </div>
