@@ -172,7 +172,7 @@ const BattleTab = () => {
       {/* Split screen header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <span className="text-2xl">{mode === "ai" ? "🤖" : opponent.avatar}</span>
+          <span className="text-2xl">{battleMode === "ai" ? "🤖" : opponent.avatar}</span>
           <div className="w-20 h-2 bg-muted rounded-full overflow-hidden">
             <div className="h-full bg-destructive rounded-full" style={{ width: `${(opScore / battleQuestions.length) * 100}%` }} />
           </div>
