@@ -22,7 +22,8 @@ interface ChatMsg {
 
 const BattleTab = () => {
   const { user, addPoints } = useGame();
-  const [mode, setMode] = useState<"select" | "ai" | "pvp" | "result">("select");
+  const [mode, setMode] = useState<"select" | "battle" | "result">("select");
+  const [battleMode, setBattleMode] = useState<"ai" | "pvp">("ai");
   const [questionIdx, setQuestionIdx] = useState(0);
   const [myScore, setMyScore] = useState(0);
   const [opScore, setOpScore] = useState(0);
