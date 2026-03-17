@@ -34,7 +34,8 @@ const BattleTab = () => {
   const [opponent] = useState(mockOpponents[Math.floor(Math.random() * mockOpponents.length)]);
 
   const startBattle = (m: "ai" | "pvp") => {
-    setMode(m);
+    setBattleMode(m);
+    setMode("battle");
     setQuestionIdx(0);
     setMyScore(0);
     setOpScore(0);
