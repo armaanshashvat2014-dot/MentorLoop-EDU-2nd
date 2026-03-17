@@ -21,6 +21,7 @@ const QuizView = ({ subject, onBack, difficulty = "medium" }: QuizViewProps) => 
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
   const [showCertificate, setShowCertificate] = useState(false);
+  const [retryKey, setRetryKey] = useState(0);
 
   useEffect(() => {
     const fetchQuizzes = async () => {
