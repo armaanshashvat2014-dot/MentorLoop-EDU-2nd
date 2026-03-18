@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useGame } from "@/context/GameContext";
-import { Medal, Share2 } from "lucide-react";
+import { Medal, Share2, Crown } from "lucide-react";
 import { toast } from "sonner";
 
 const leaderboard = [
@@ -26,12 +26,13 @@ const LeaderboardTab = () => {
   return (
     <div className="p-4 max-w-lg mx-auto pb-24">
       <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="font-display text-3xl font-bold">Leaderboard</h1>
-          <p className="text-muted-foreground text-sm">Your rank: #{user.rank}</p>
-        </div>
+        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
+          <h1 className="font-display text-3xl font-bold">Leaderboard 🏆</h1>
+          <p className="text-muted-foreground text-sm">Your rank: #{user.rank} — Keep climbing!</p>
+        </motion.div>
         <motion.button
-          whileTap={{ scale: 0.95 }}
+          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
           onClick={shareRank}
           className="flex items-center gap-1.5 px-3 py-2 bg-primary/10 text-primary rounded-xl font-display font-bold text-sm"
         >
@@ -47,12 +48,28 @@ const LeaderboardTab = () => {
           return (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
+              transition={{ delay: idx * 0.15, type: "spring", stiffness: 200 }}
               className="text-center"
+              whileHover={{ y: -4 }}
             >
-              <span className={`text-${isFirst ? "5xl" : "4xl"} block mb-1`}>{p.avatar}</span>
+              <motion.span
+                className={`${isFirst ? "text-5xl" : "text-4xl"} block mb-1`}
+                animate={isFirst ? { y: [0, -4, 0] } : {}}
+                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              >
+                {p.avatar}
+              </motion.span>
+              {isFirst && (
+                <motion.div
+                  className="flex justify-center mb-1"
+                  animate={{ rotate: [0, 5, -5, 0] }}
+                  transition={{ repeat: Infinity, duration: 3 }}
+                >
+                  <Crown className="w-5 h-5 text-streak" />
+                </motion.div>
+              )}
               <div className={`${isFirst ? "bg-streak/20 border-streak" : "bg-muted border-border"} border-2 rounded-xl px-4 py-3 ${isFirst ? "pb-8" : "pb-5"}`}>
                 <Medal className={`w-5 h-5 mx-auto mb-1 ${medalColors[idx] || "text-muted-foreground"}`} />
                 <p className="font-display font-bold text-xs">{p.name}</p>
@@ -71,7 +88,8 @@ const LeaderboardTab = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.04 }}
-            className="flex items-center gap-3 p-3 bg-card rounded-xl border border-border"
+            whileHover={{ x: 4, scale: 1.01 }}
+            className="flex items-center gap-3 p-3 bg-card rounded-xl border border-border cursor-default"
           >
             <span className="font-display font-bold text-muted-foreground w-6 text-center">
               {i < 3 ? ["🥇", "🥈", "🥉"][i] : `${i + 1}`}
@@ -89,12 +107,19 @@ const LeaderboardTab = () => {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-3 p-3 bg-primary/10 rounded-xl border-2 border-primary"
+          whileHover={{ scale: 1.02 }}
+          className="flex items-center gap-3 p-3 bg-primary/10 rounded-xl border-2 border-primary animate-pulse-glow"
         >
           <span className="font-display font-bold text-primary w-6 text-center">#{user.rank}</span>
-          <span className="text-2xl">{user.avatar}</span>
+          <motion.span
+            className="text-2xl"
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          >
+            {user.avatar}
+          </motion.span>
           <div className="flex-1">
-            <p className="font-display font-semibold text-sm">{user.name} (You)</p>
+            <p className="font-display font-semibold text-sm">{user.name} (You) ⬆️</p>
             <p className="text-xs text-muted-foreground">{user.quizzesSolved} quizzes solved</p>
           </div>
           <span className="font-display font-bold text-sm text-primary">{user.points}</span>
