@@ -49,11 +49,7 @@ const LearnTab = () => {
         </p>
       </motion.div>
 
-      <motion.div
-        className="relative mb-6"
-        whileFocusWithin={{ scale: 1.02 }}
-        transition={{ type: "spring", stiffness: 300 }}
-      >
+      <div className="relative mb-6">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
         <input
           type="text"
