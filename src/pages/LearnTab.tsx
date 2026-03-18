@@ -58,7 +58,7 @@ const LearnTab = () => {
           onChange={e => setSearch(e.target.value)}
           className="w-full pl-10 pr-4 py-3 rounded-xl bg-card border border-border font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
         />
-      </motion.div>
+      </div>
 
       {search && filtered.length === 0 && (
         <motion.div
