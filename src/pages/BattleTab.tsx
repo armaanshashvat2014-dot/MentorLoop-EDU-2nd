@@ -121,12 +121,6 @@ const BattleTab = () => {
                 <p className="font-display font-semibold text-sm">{op.name}</p>
                 <p className="text-xs text-muted-foreground">Rank #{op.rank}</p>
               </div>
-              <motion.button
-                whileTap={{ scale: 0.95 }}
-                className="px-3 py-1.5 bg-battle text-battle-foreground rounded-lg font-display font-bold text-xs"
-              >
-                Challenge
-              </motion.button>
             </div>
           ))}
         </div>
