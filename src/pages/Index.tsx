@@ -24,6 +24,9 @@ const Index = () => {
           {activeTab === "leaderboard" && <LeaderboardTab />}
           {activeTab === "profile" && <ProfileTab />}
         </main>
+        <div className="fixed bottom-16 left-0 right-0 text-center py-1 text-xs text-muted-foreground font-body z-40">
+          Powered by MentorLoop EDU
+        </div>
         <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
     </GameProvider>
